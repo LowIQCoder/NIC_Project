@@ -5,6 +5,7 @@ Here you can find all details regarding our project
 ## Index  
 - [Project Overview](#project-overview)
 - [Used Technologies](#used-technologies)
+- [Dataset](#dataset)
 - [Roadmap](#roadmap)  
 - [Authors](#authors)  
 - [License](#license)  
@@ -15,6 +16,9 @@ This project will develop and compare two Nature Inspired algorithms: Ant Colony
 ## Used Technologies  
 - **Python** were choosen as main programming language
 - **Deap** python libraty for fast and efficient implementation of GA applications
+
+## Dataset
+Our dataset is a fully connected graph with **36** nodes. Each node represents building in Innopolis city. All coordinates of buildings were manually collected with use of 'Yandex Maps'. After, coordinates were processed to get distance graph. All information about data processing can be found [here](utils/graph_builder.ipynb), all datasets located in [data](data/) folder 
 
 ## Roadmap  
 - 🟢 Weeks 1-2:

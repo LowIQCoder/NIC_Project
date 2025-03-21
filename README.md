@@ -23,7 +23,7 @@ Our dataset is a fully connected graph with **36** nodes. Each node represents b
 ## Roadmap  
 - 🟢 Weeks 1-2:
   - 🟢 Dataset building
-- 🟢 Weeks 3-4:
+- 🟡 Weeks 3-4:
   - 🟡 Devolopment of GA and ACO
   - 🟡 Validation of GA and ACO
 - 🟠 Weeks 5-6:

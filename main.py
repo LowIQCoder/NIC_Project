@@ -31,14 +31,14 @@ def main():
     nodes, graph = get_data('./data/graph.json')
 
     # TODO: Finish ACO, GA, and DP
-    aco = ACO()
+    aco = ACO(distances=graph)
     ga = GA()
     dp = DP()
 
     aco_start_time = datetime.now()
     aco_results = aco.solve()
     aco_end_time = datetime.now()
-
+    
     ga_start_time = datetime.now()
     ga_results = ga.solve()
     ga_end_time = datetime.now()
@@ -46,7 +46,7 @@ def main():
     dp_start_time = datetime.now()
     dp_results = dp.solve()
     dp_end_time = datetime.now()
-
+    
     # TODO: Add new metrics
     print("Testing finished:")
     print("========== ACO ==========")

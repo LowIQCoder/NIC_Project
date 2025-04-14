@@ -31,6 +31,7 @@ def run_solver(queue, algorithm_class, graph):
 # =======================
 def solver(nodes, algorithm_key):
     algorithm = ALGORITHMS[algorithm_key]
+    timed_counter = 0
 
     for graph_size in range(2, MAX_GRAPH_SIZE + 1):
         graph = get_distances(nodes, graph_size)
@@ -57,7 +58,10 @@ def solver(nodes, algorithm_key):
                 continue
 
         if timed_out:
-            return 0
+            timed_counter += 1
+            if timed_counter >= 3:
+                return 0
+            continue
 
         print(f"\nTest #{graph_size-1} ============== {algorithm_key.upper()} ==============")
         print(f"Graph size:\t\t{graph_size}")

@@ -33,7 +33,7 @@ def solver(nodes, algorithm_key):
     algorithm = ALGORITHMS[algorithm_key]
     timed_counter = 0
 
-    for graph_size in range(2, MAX_GRAPH_SIZE + 1):
+    for graph_size in range(3, MAX_GRAPH_SIZE + 1):
         graph = get_distances(nodes, graph_size)
         result = None
         timed_out = False
@@ -86,7 +86,7 @@ def solver(nodes, algorithm_key):
 # ========================
 def main():
     nodes = get_data(GRAPH_JSON_PATH)
-    for algorithm in ['dp', 'aco', 'ga']:
+    for algorithm in ['ga', 'dp', 'aco']:
         solver(nodes, algorithm)
 
 if __name__ == '__main__':

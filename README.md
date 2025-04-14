@@ -2,9 +2,8 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.8+](https://img.shields.io/badge/Python-3.8%2B-blue.svg)](https://www.python.org/)
-![GitHub contributors](https://img.shields.io/github/contributors/innopolis-ai/tsp-nature-inspired-algorithms)
 
-An optimized implementation and comparative analysis of **Ant Colony Optimization (ACO)** and **Genetic Algorithms (GA)** for solving TSP, benchmarked against Dynamic Programming (DP). Designed for real-world urban navigation using Innopolis city data.
+An optimized implementation and comparative analysis of **Ant Colony Optimization (ACO)** and **Genetic Algorithms (GA)** for solving TSP, benchmarked against **Dynamic Programming (DP)**. Designed for real-world urban navigation using Innopolis city data.
 
 ## 📖 Table of Contents
 - [Key Features](#-key-features)
@@ -50,17 +49,15 @@ An optimized implementation and comparative analysis of **Ant Colony Optimizatio
 ## 🌍 Dataset & Preprocessing
 **Cities**: 36 buildings in Innopolis, Russia  
 **Data Sources**:
-- Coordinates collected via Yandex Maps API
+- Coordinates collected via Yandex Maps
 - Distance matrix calculated using Haversine formula
 
 **Preprocessing Pipeline**:
 ```mermaid
 graph LR
 A[Yandex Maps Coordinates] --> B(Coordinate Cleaning)
-B --> C{Distance Calculation}
-C -->|Haversine| D[Euclidean Matrix]
-C -->|OSRM API| E[Road Distance Matrix]
-D & E --> F[Graph Builder Notebook]
+B --> D{Distance Calculation}
+D --> F[Graph Builder Notebook]
 F --> G[Final JSON Dataset]
 ```
 
@@ -89,18 +86,6 @@ F --> G[Final JSON Dataset]
 **Run All Algorithms**:
 ```python
 python main.py
-```
-
-**Run Specific Algorithm**:
-```python
-# Genetic Algorithm
-python run_algorithm.py --algorithm ga
-
-# Ant Colony Optimization
-python run_algorithm.py --algorithm aco
-
-# Dynamic Programming (baseline)
-python run_algorithm.py --algorithm dp
 ```
 
 **Command Line Options**:
@@ -143,13 +128,6 @@ Path Length:         14.2 km
 Optimal Path:        0 → 12 → 5 → ... → 22 → 0
 ```
 
-**Performance Comparison**:
-| Metric          | DP (20 nodes) | ACO (36 nodes) | GA (36 nodes) |
-|-----------------|---------------|----------------|---------------|
-| Avg. Time (s)   | 318.4         | 972.8          | 901.2         |
-| Memory (MB)     | 2.1           | 42.9           | 58.7          |
-| Path Accuracy   | 100%          | 98.3%          | 97.8%         |
-
 ---
 
 ## 🗺️ Roadmap
@@ -159,12 +137,12 @@ Optimal Path:        0 → 12 → 5 → ... → 22 → 0
   - ✔️ Performance benchmarking
 
 - **In Progress**:
-  - 🌐 Interactive web visualization
-  - 📊 Convergence analysis dashboard
+  - 🏁 Preparing to final presentation
 
 - **Future Work**:
+  - 🌐 Interactive web visualization
+  - 📊 Convergence analysis dashboard
   - 🧠 Add Particle Swarm Optimization
-  - 📱 Mobile-optimized implementation
   - 🌍 Multi-city dataset expansion
 
 ---
@@ -176,17 +154,14 @@ Optimal Path:        0 → 12 → 5 → ... → 22 → 0
 | Nikita Stepankov        | Optimization Specialist       | ACO Implementation |
 | Makar Egorov            | Evolutionary Computing Expert | GA Development |
 
-**Contact**: tsp-project@innopolis.university
+**Contacts**:
+- m.berheeev@innopolis.university
+- n.stepankov@innopolis.university
+- m.egorov@innopolis.university 
 
 ---
 
 ## 📜 License
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
 
-**Innopolis University** • Artificial Intelligence Department • 2023
-
----
-
-<div align="center">
-  <i>Optimizing paths, one algorithm at a time 🛣️→🚀</i>
-</div>
+**Innopolis University** 2025

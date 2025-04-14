@@ -10,7 +10,7 @@ class ACO:
         self,
         distances: List[List[float]],
         n_ants: int = 10,
-        n_iterations: int = 100,
+        n_iterations: int = 1000,
         decay: float = 0.5,
         alpha: float = 1.0,
         beta: float = 1.0

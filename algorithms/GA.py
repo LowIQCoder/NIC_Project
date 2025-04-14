@@ -32,7 +32,7 @@ class GA:
         crossover_rate: float = 0.9,
         elitism: float = 0.1,
         max_generations: int = 1000,
-        early_stopping: int = 100
+        early_stopping: int = 1000
     ) -> None:
         """Initialize GA solver with problem parameters.
 

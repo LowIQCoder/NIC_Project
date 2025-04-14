@@ -10,7 +10,7 @@ from algorithms.GA import GA
 # =======================
 GRAPH_JSON_PATH = './data/nodes.json'
 MAX_GRAPH_SIZE = 36
-MAX_EXECUTION_TIME = 10 * 60
+MAX_EXECUTION_TIME = 1 * 60 * 60
 ALGORITHMS = {
     'dp': DP,
     'aco': ACO,
@@ -86,7 +86,7 @@ def solver(nodes, algorithm_key):
 # ========================
 def main():
     nodes = get_data(GRAPH_JSON_PATH)
-    for algorithm in ['ga', 'dp', 'aco']:
+    for algorithm in ['ga', 'aco', 'dp']:
         solver(nodes, algorithm)
 
 if __name__ == '__main__':

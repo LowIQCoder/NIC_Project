@@ -2,20 +2,39 @@ import math
 import tracemalloc
 from typing import List
 
+
 class DP:
+    """Dynamic Programming-based solution for the Traveling Salesman Problem (TSP)."""
+
     def __init__(self, distance_matrix: List[List[float]]):
+        """
+        Initializes the DP solver with a distance matrix.
+
+        Args:
+            distance_matrix (List[List[float]]): A 2D list representing pairwise distances between nodes.
+        """
         self.distance = distance_matrix
         self.n = len(distance_matrix)
         self.memo = {}
         self.parent = {}
         self.iterations = 0
 
-    def solve(self):
+    def solve(self) -> dict:
+        """
+        Solves the TSP using dynamic programming and memoization.
+
+        Returns:
+            dict: A dictionary containing:
+                - 'cost' (float): Total cost of the shortest path.
+                - 'path' (List[int]): Order of visited nodes (including return to start).
+                - 'iterations' (int): Number of recursive calls made.
+                - 'memory_bytes' (int): Peak memory usage during execution in bytes.
+        """
         tracemalloc.start()
-        
+
         min_cost = self._tsp(0, 1)
         path = self._reconstruct_path()
-        
+
         current, peak = tracemalloc.get_traced_memory()
         tracemalloc.stop()
 
@@ -27,6 +46,16 @@ class DP:
         }
 
     def _tsp(self, pos: int, visited: int) -> float:
+        """
+        Recursive helper method that computes the minimum cost using DP.
+
+        Args:
+            pos (int): Current node index.
+            visited (int): Bitmask representing visited nodes.
+
+        Returns:
+            float: Minimum cost to complete the tour from the current state.
+        """
         self.iterations += 1
         key = (pos, visited)
 
@@ -47,7 +76,13 @@ class DP:
         self.memo[key] = min_cost
         return min_cost
 
-    def _reconstruct_path(self):
+    def _reconstruct_path(self) -> List[int]:
+        """
+        Reconstructs the shortest path from the memoization and parent tracking.
+
+        Returns:
+            List[int]: The sequence of nodes representing the shortest path including return to the start.
+        """
         path = [0]
         visited = 1
         current = 0

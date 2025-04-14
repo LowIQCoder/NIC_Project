@@ -1,58 +1,66 @@
-import json
-import os
 from datetime import datetime
 
+from utils.utils import *
+from algorithms.DP import DP
 from algorithms.ACO import ACO
 from algorithms.GA import GA
-from algorithms.DP import DP
 
+# =======================
+# Configurable Parameters
+# =======================
+GRAPH_JSON_PATH = './data/graph.json'
+MAX_GRAPH_SIZE = 36
+MAX_EXECUTION_TIME = 10
 
-def get_data(path: str) -> tuple:
-    """ Extracts nodes and graph information from given json file
+ALGORITHMS = {
+    'dp': DP,
+    'aco': ACO,
+    'ga': GA
+}
 
-    Args:
-        path (str): Path to file
+# =======================
+# Solver Function
+# =======================
 
-    Returns:
-        tuple:
-            - List of nodes
-            - Distance matrix
-    """
-    PATH = os.path.abspath(path)
+def solver(nodes, algorithm_key):
+    algorithm = ALGORITHMS[algorithm_key]
 
-    with open(PATH, 'r') as file:
-        data = json.load(file)
-        nodes = data['nodes']
-        graph = data['graph']
+    print(f"========== {algorithm_key.upper()} ==========")
 
-        return nodes, graph
-    
+    for graph_size in range(2, MAX_GRAPH_SIZE + 1):
+        graph = get_distances(nodes, graph_size)
+        solver = algorithm(graph)
+
+        start_time = datetime.now()
+        result = solver.solve()
+        exec_time = (datetime.now() - start_time).total_seconds()
+
+        print(f"\nTest #{graph_size - 1} =============================")
+        print(f"Graph size:\t\t{graph_size}")
+        print(f"Execution time:\t\t{exec_time:.3f} seconds")
+        print(f"Number of iterations:\t{result['iterations']}")
+        print(f"Used memory:\t\t{result['memory_bytes']} bytes")
+        print(f"Path length (m):\t{result['cost']:.2f}")
+        print(f"Path:\t\t\t{' -> '.join(map(str, result['path']))}")
+
+        to_file('./results/results_' + algorithm_key + '.csv', {
+            "Graph Size": graph_size,
+            "Execution Time (s)": exec_time,
+            "Iterations": result['iterations'],
+            "Memory (bytes)": result['memory_bytes'],
+            "Shortest Path": ' -> '.join(map(str, result['path'])),
+            "Path Length (m)": round(result['cost'], 2)
+        })
+
+# ========================
+# Main Experiment Logic
+# ========================
 def main():
-    nodes, graph = get_data('./data/graph.json')
+    nodes = get_data(GRAPH_JSON_PATH)
 
-    # TODO: Finish ACO, GA, and DP
-    aco = ACO(distances=graph)
-    ga = GA()
-    dp = DP()
-
-    aco_start_time = datetime.now()
-    aco_results = aco.solve()
-    aco_end_time = datetime.now()
-    
-    ga_start_time = datetime.now()
-    ga_results = ga.solve()
-    ga_end_time = datetime.now()
-
-    dp_start_time = datetime.now()
-    dp_results = dp.solve()
-    dp_end_time = datetime.now()
-    
-    # TODO: Add new metrics
-    print("Testing finished:")
-    print("========== ACO ==========")
-    print(f"Execution time:\t\t{aco_end_time - aco_start_time}")
-    print(f"Number of iterations\t{aco_results['iter_no']}")
-    print(f"Used memory:\t\t{aco_results['memory']}")
+    solver(nodes, 'dp')
+    solver(nodes, 'aco')
+    solver(nodes, 'ga')
 
 
 if __name__ == '__main__':

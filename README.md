@@ -25,22 +25,21 @@ An optimized implementation and comparative analysis of **Ant Colony Optimizatio
 - **Algorithm Comparison**:
   - 🐜 **ACO**: Pheromone-based path optimization
   - 🧬 **GA**: Evolutionary approach with tournament selection
-  - ⚡ **DP**: Exact solution baseline (up to 20 nodes)
+  - ⚡ **DP**: Exact solution baseline (up to 15 nodes)
 - **Performance Metrics**:
   - Execution time ⏱️
   - Memory consumption 💾
   - Solution accuracy 🎯
-  - Convergence rate 📉
 
 ---
 
 ## 📊 Algorithms Overview
 
-| Algorithm | Complexity | Optimality | Best For |
-|-----------|------------|------------|----------|
-| DP        | O(n²2ⁿ)    | Exact      | Small graphs (<20 nodes) |
-| ACO       | O(iter × n² × m) | Heuristic | Medium graphs (20-50 nodes) |
-| GA        | O(iter × pop_size × n²) | Heuristic | Large graphs (50+ nodes) |
+| Algorithm  | Optimality | Best For |
+|-----------|------------|----------|
+| DP        | Exact      | Small graphs (<15 nodes) |
+| ACO       | Heuristic | Medium graphs (15-20 nodes) |
+| GA        | Heuristic | Large graphs (20+ nodes) |
 
 *Where m = number of ants in ACO*
 
@@ -72,8 +71,8 @@ F --> G[Final JSON Dataset]
 ## ⚙️ Installation
 1. Clone repository:
    ```bash
-   git clone https://github.com/innopolis-ai/tsp-nature-inspired-algorithms.git
-   cd tsp-nature-inspired-algorithms
+   git clone https://github.com/LowIQCoder/NIC_Project
+   cd NIC_Project
    ```
 2. Install dependencies:
    ```bash
@@ -88,16 +87,6 @@ F --> G[Final JSON Dataset]
 python main.py
 ```
 
-**Command Line Options**:
-```bash
-Options:
-  --algorithm    Algorithm to run (ga/aco/dp) [default: all]
-  --max_nodes    Maximum nodes to test [default: 36]
-  --timeout      Timeout per test (seconds) [default: 1200]
-```
-
----
-
 ## 🧪 Testing & Metrics
 **Evaluation Protocol**:
 1. **Correctness Check**: Validate against DP results (n ≤ 20)
@@ -108,9 +97,9 @@ Options:
 
 **Termination Criteria**:
 ```python
-if execution_time > 1200:  # 20 minutes
+if execution_time > 3600:
     terminate_algorithm()
-elif iterations > 5000:
+elif iterations > 1000:
     terminate_algorithm()
 ```
 
@@ -162,6 +151,6 @@ Optimal Path:        0 → 12 → 5 → ... → 22 → 0
 ---
 
 ## 📜 License
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 **Innopolis University** 2025

@@ -47,7 +47,7 @@ An optimized implementation and comparative analysis of **Ant Colony Optimizatio
 **Cities**: 36 buildings in Innopolis, Russia  
 **Data Sources**:
 - Coordinates collected via Yandex Maps
-- Distance matrix calculated using Haversine formula
+- Distance matrix calculated using GeoPy module
 
 **Preprocessing Pipeline**:
 ```mermaid

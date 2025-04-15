@@ -89,9 +89,9 @@ python main.py
 
 ## 🧪 Testing & Metrics
 **Evaluation Protocol**:
-1. **Correctness Check**: Validate against DP results (n ≤ 20)
+1. **Correctness Check**: Validate against DP results (n ≤ 22)
 2. **Performance Benchmark**:
-   - Time: Maximum 20 minutes per algorithm instance
+   - Time: Maximum 60 minutes per algorithm instance
    - Memory: Peak usage tracking
    - Convergence: Iterations to stable solution
 

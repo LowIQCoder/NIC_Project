@@ -41,8 +41,6 @@ An optimized implementation and comparative analysis of **Ant Colony Optimizatio
 | ACO       | Heuristic | Medium graphs (15-20 nodes) |
 | GA        | Heuristic | Large graphs (20+ nodes) |
 
-*Where m = number of ants in ACO*
-
 ---
 
 ## 🌍 Dataset & Preprocessing
